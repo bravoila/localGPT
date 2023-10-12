@@ -120,6 +120,8 @@ def main(device_type):
     # Load documents and split in chunks
     logging.info(f"Loading documents from {SOURCE_DIRECTORY}")
     documents = load_documents(SOURCE_DIRECTORY)
+    logging.info(f"Processing documents with {device_type}")
+
     text_documents, python_documents = split_documents(documents)
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     python_splitter = RecursiveCharacterTextSplitter.from_language(
@@ -149,7 +151,7 @@ def main(device_type):
         client_settings=CHROMA_SETTINGS,
 
     )
-   
+
 
 
 if __name__ == "__main__":

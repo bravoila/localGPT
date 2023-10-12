@@ -33,7 +33,7 @@ MAX_NEW_TOKENS = CONTEXT_WINDOW_SIZE  # int(CONTEXT_WINDOW_SIZE/4)
 
 #### If you get a "not enough space in the buffer" error, you should reduce the values below, start with half of the original values and keep halving the value until the error stops appearing
 
-N_GPU_LAYERS = 100  # Llama-2-70B has 83 layers
+N_GPU_LAYERS = 10000  # Llama-2-70B has 83 layers
 N_BATCH = 512
 
 ### From experimenting with the Llama-2-7B-Chat-GGML model on 8GB VRAM, these values work:

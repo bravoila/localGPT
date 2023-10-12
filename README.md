@@ -12,6 +12,9 @@
 - **Graphical Interface**: LocalGPT comes with two GUIs, one uses the API and the other is standalone (based on streamlit).
 - **GPU, CPU & MPS Support**: Supports multiple platforms out of the box, Chat with your data using `CUDA`, `CPU` or `MPS` and more!
 
+[//]: # (export LLAMA_CPP_LIB=/home/cma16/anaconda3/envs/localGPT310/lib/python3.10/site-packages/langchain/llms/llamacpp)
+
+
 ## Dive Deeper with Our Videos 🎥
 - [Detailed code-walkthrough](https://youtu.be/MlyoObdIHyo)
 - [Llama-2 with LocalGPT](https://youtu.be/lbFmceo4D5E)
@@ -50,6 +53,12 @@ conda create -n localGPT python=3.10.0
 conda activate localGPT
 ```
 
+For M-chip Mac, ensure you are using the arm env by adding
+```shell
+CONDA_SUBDIR=osx-arm64 conda create -n localGPT python=3.10.0
+conda activate localGPT
+```
+
 3. 🛠️ Install the dependencies using pip
 
 To set up your environment to run the code, first install all requirements:
@@ -71,6 +80,11 @@ For `NVIDIA` GPUs support, use `cuBLAS`
 # Example: cuBLAS
 CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install llama-cpp-python==0.1.83 --no-cache-dir
 ```
+For my Ubuntu-22.04, use the following to make sure llama_cpp can find GPU
+```
+CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install llama-cpp-python==0.1.83 --no-cache-dir --prefer-binary --extra-index-url=https://jllllll.github.io/llama-cpp-python-cuBLAS-wheels/AVX/cu121)
+```
+ref: https://github.com/jllllll/llama-cpp-python-cuBLAS-wheels
 
 For Apple Metal (`M1/M2`) support, use
 
